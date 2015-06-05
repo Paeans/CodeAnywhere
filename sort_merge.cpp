@@ -1,7 +1,26 @@
 #include <iostream>
 #include <fstream>
+#include <ctime>
+#include <cstring>
 
 using namespace std;
+
+long * submerge(long *flist, long flength, long *slist, long slength){
+    if(flength < 0 || slist < 0) return NULL;
+    
+    long *result = new long[flength + slength];
+    long i, index01, index02;
+    i = index01 = index02 = 0;
+    
+    while(index01 < flength && index02 < slength)
+        result[i++] = flist[index01] > slist[index02] ? slist[index02++] : flist[index01++];
+    while(index01 < flength)
+        result[i++] = flist[index01++];
+    while(index02 < slength)
+        result[i++] = slist[index02++];
+    
+    return result;
+}
 
 int mergeList(long *data, long start, long end, long step){
     long length = end - start;
@@ -41,21 +60,29 @@ int main(){
         long counter = 0;
         while(counter < num) filereader >> data[counter++];
 
-        time_t begin = time(NULL);
+        clock_t begin = clock();
         
         long n = 1;
         while(n < num){
             long start = 0;
-            while(start < num){  
-                long end = start + 2 * n;
-                mergeList(data, start, end > num ? num : end, n);
-                start = end;
+            while(start < num){
+
+                if(start + n > num) break;
+
+                long slength = start + 2 * n > num ? num - start - n: n;
+                long * result = submerge(&data[start], n, &data[start + n], slength );
+                //mergeList(data, start, end > num ? num : end, n);
+                memcpy(&data[start], result, sizeof(long) * (n + slength));
+                delete[] result;
+                start += 2 * n;
             }            
             n = n*2;
         }
-        time_t end = time(NULL);
+        clock_t end = clock();
         //cout << "End time is:    " << end << endl;	
-        cout << "Time used to sort(merge) "<< num << " number is: " <<  end - begin << endl;
+        cout << "Time used to sort(merge) " << num << " number is: " << endl 
+            << "        "<< end - begin << " clicks" << endl
+            << "        "<< ((float)(end - begin))/CLOCKS_PER_SEC << " seconds" << endl;
         
         outstream << num << endl;
         counter = 0;

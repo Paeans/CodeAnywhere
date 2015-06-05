@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ int main(){
         long counter = 0;
         while(counter < num) filereader >> data[counter++];
 
-        time_t begin = time(NULL);
+        clock_t begin = clock();
         
         for(long i=0; i<num; i++){
             long tmp = data[i];
@@ -28,9 +29,11 @@ int main(){
             while(j-- > 0 && data[j] > tmp) data[j+1] = data[j];
             data[j+1] = tmp;
         }
-        time_t end = time(NULL);
-        //cout << "End time is:    " << end << endl;	
-        cout << "Time used to sort(insert) "<< num << " number is: " <<  end - begin << endl;
+        clock_t end = clock();
+        	
+        cout << "Time used to sort(insert) " << num << " number is: " << endl 
+            << "        "<< end - begin << " clicks" << endl
+            << "        "<< ((float)(end - begin))/CLOCKS_PER_SEC << " seconds" << endl;
         
         outstream << num << endl;
         counter = 0;
