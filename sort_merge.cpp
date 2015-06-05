@@ -71,6 +71,7 @@ int main(){
 
                 long slength = start + 2 * n > num ? num - start - n: n;
                 long * result = submerge(&data[start], n, &data[start + n], slength );
+                if(result == NULL) break;
                 //mergeList(data, start, end > num ? num : end, n);
                 memcpy(&data[start], result, sizeof(long) * (n + slength));
                 delete[] result;
