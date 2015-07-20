@@ -1,6 +1,6 @@
 # print object
 # print type(object)
-
+from Problem06 import *
 class baseclass(object):
     def __init__(self):
         self.x = 1
@@ -44,4 +44,4 @@ def genPrimes():
             yield tmp
         tmp += 1
         
-print range(10)
+print buildCoder(5)
