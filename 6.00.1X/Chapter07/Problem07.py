@@ -2,11 +2,8 @@ import string
 
 class NewsStory(object):
     def __init__(self, guid, title, subject, summary, link):
-        self.id = guid
-        self.tl = title
-        self.sub = subject
-        self.smry = summary
-        self.link = link
+        self.id, self.tl, self.sub, self.smry, self.link = \
+            guid, title, subject, summary, link
         
     def getGuid(self):
         return self.id
