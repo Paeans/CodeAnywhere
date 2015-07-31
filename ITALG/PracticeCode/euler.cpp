@@ -71,10 +71,35 @@ int getmaxpalin(){
     return result;
 }
 
+int get3n1steps(long n){
+    int count{1};
+    while(n != 1){
+        count++;
+        n = n%2==0 ? n/2 : 3*n+1;        
+    }
+    return count;
+}
+
+int getmaxsteps(long a, long b){
+    
+        int step = 0;
+        long start = a > b ? b : a;
+        long stop = a > b ? a : b;
+        for(long i=start; i<=stop; i++){
+            int tmp = get3n1steps(i);
+            if(tmp > step) step = tmp;
+        }
+        cout << a << " " << b << " " << step << endl;
+}
+
 int main(){   
    
-    cout << findsumunder(1000, 3, 5) << endl;
-    cout << sumevenfibo(4000000) << endl;
-    cout << bigestprimefactor(600851475143) << endl;
-    cout << getmaxpalin() << endl;
+    //cout << findsumunder(1000, 3, 5) << endl;
+    //cout << sumevenfibo(4000000) << endl;
+    //cout << bigestprimefactor(600851475143) << endl;
+    //cout << getmaxpalin() << endl;    
 }
+
+
+
+
