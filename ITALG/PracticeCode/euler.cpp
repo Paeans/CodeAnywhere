@@ -92,13 +92,41 @@ int getmaxsteps(long a, long b){
         cout << a << " " << b << " " << step << endl;
 }
 
+long maxcommon(long a, long b){
+    
+    while(a != 0 && b !=0){
+        long tmp = b;
+        b = a % b;
+        a = tmp;
+    }
+    return a + b;
+}
+
+/**
+every new num, only need to multiply the remains of the common 
+of the num and the previous result
+**********************************
+AND CAN BE CHANGE TO MORE EASY WAY
+every number can be a multiple of a list of prime numbers
+p^n == num --> a = floor(log(num) / log(p)) //the max prime
+then N = N * p ^ a
+** when p > sqrt(num), a will be 1 
+*/
+long smallmulti(int num){
+    long result = 1;
+    for(int i=1; i<=num; i++)
+        result *= i/maxcommon(i, result);
+    return result;
+}
+
 int main(){   
    
     //cout << findsumunder(1000, 3, 5) << endl;
     //cout << sumevenfibo(4000000) << endl;
     //cout << bigestprimefactor(600851475143) << endl;
-    //cout << getmaxpalin() << endl; 
-    
+    //cout << getmaxpalin() << endl;    
+    //cout << smallmulti(20) << endl;
+   
 }
 
 
