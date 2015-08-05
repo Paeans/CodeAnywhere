@@ -1,2 +1,2 @@
 # CodeAnywhere
-Manage Code of CodeAnywhere
+Practice Code from CodeAnywhere
