@@ -311,15 +311,13 @@ class Family(object):
             bnode = self.names_to_nodes[b]
             bcounter = 0
             while bnode != None:
-                if anode == bnode:
-                    if acounter > bcounter:
-                        t = bcounter
-                        r = acounter - bcounter
-                    else:
-                        t = acounter
-                        r = bcounter - acounter
-                    return (t-1, r)
-                bnode = bnode.get_parent()
-                bcounter += 1
+                if not anode == bnode:
+                    bnode = bnode.get_parent()
+                    bcounter += 1 
+                    continue
+                return (min(acounter, bcounter) - 1, \
+                    max(acounter, bcounter) - \
+                    min(acounter, bcounter))
             anode = anode.get_parent()
             acounter += 1
+
