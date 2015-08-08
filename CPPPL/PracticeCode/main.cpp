@@ -89,6 +89,7 @@ int main(){
     
     My_code::main(); 
     
-    rpntransfer("((a+t)*((b+(a+c))^(c+d)))");
+    //rpntransfer("((a+t)*((b+(a+c))^(c+d)))");
+    
 }
 
