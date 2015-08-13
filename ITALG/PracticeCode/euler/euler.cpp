@@ -216,6 +216,29 @@ void p11(){
     cout <<  result << endl;
 }
 
+int p12_factor(long num){
+    int result = 1;
+    int counter = 0;
+    int i=2;
+    while(num > 1)
+        if(num % i == 0){
+            counter++;
+            num /= i;
+        }else{
+            result *= (counter+1);
+            counter = 0;
+            i++;
+        }    
+    return result * (counter + 1);
+}
+
+long p12(int count){
+    long result = 0;
+    long num = 1;    
+    while(p12_factor(result += num++) < count);
+    return result;    
+}
+
 int main(){   
    
     //cout << findsumunder(1000, 3, 5) << endl;
@@ -274,6 +297,11 @@ int main(){
 20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
+    */
+    /**
+    int count = 0;
+    cin >> count;
+    cout << p12(count) << endl;  
     */
 }
 
