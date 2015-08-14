@@ -1,2 +1,0 @@
-# CodeAnywhere
-Practice Code
