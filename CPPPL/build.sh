@@ -9,7 +9,7 @@ do
     then
         cppfilelist+=${filename}" "
     else
-        mainfilelist+=${filename}" "
+        [[ $1 == "" || $1 == ${filename%.cpp} ]] && mainfilelist+=${filename}" "
     fi 
 done
 [[  ${mainfilelist} == "" ]] && echo "No main file found" && exit 1
@@ -19,11 +19,10 @@ do
     mainname=${mainfile%.cpp}
     echo "Compile" ${mainfile};
     g++ -std=c++0x -o ${mainname}.out ${mainfile} ${cppfilelist} && (     
-        [[ $1 == "" || $1 == ${mainname} ]] && (
             echo "Excute"  ${mainname}.out; 
             echo "**************************************";
             ./${mainname}.out;
-            echo "**************************************" ))    
+            echo "**************************************" )    
     echo
 done
 
