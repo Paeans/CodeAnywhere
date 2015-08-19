@@ -14,11 +14,12 @@ int main(){
     cout << v.size() << endl;
     
     vector<vector<int>> mv{
-        {1, 2, 3}, 
-        {4, 5, 6},
-        {7, 8, 9}};    
+        {1}, 
+        {2, 3},
+        {4, 5, 6}}; 
+    mv.push_back({7, 8, 9, 0});
     cout << mv.size() << endl;
-    cout << mv[1][1] << endl;
+    cout << mv[3][2] << endl;
     
     return 0;
 }
