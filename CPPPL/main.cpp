@@ -14,8 +14,6 @@ int My_code::main(){
     cout << "test namespace function" << endl;
 }
 
-
-
 int main(){
     
     cout << "test program" << endl;
@@ -27,7 +25,6 @@ int main(){
     
     My_code::main(); 
     
-    return 0;
-    
+    return 0;    
 }
 
