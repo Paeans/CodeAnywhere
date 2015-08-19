@@ -18,11 +18,6 @@ int main(){
     
     cout << "test program" << endl;
     
-    int a = 11.11;
-    int b{111};
-    
-    cout << a << " " << b << endl;
-    
     My_code::main(); 
     
     return 0;    
