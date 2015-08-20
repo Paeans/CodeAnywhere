@@ -6,6 +6,12 @@
 
 using namespace std;
 
+template<class R, class T> R narrow_cast(const T& a){
+    R r = R(a);
+    if(a != T(r)) throw runtime_error("narrow cast");
+    return r;
+}
+
 int main()
 try{
     cout << "Code in Practice Cpp." << endl;
@@ -15,6 +21,10 @@ try{
     //cout << v.size() << endl;
     
     //throw out_of_range("out of range");
+    
+    //narrow_cast compare two type value, throw runtime_error
+    //cout << narrow_cast<int>(2.0) << endl; //OK no error 
+    //cout << narrow_cast<int>(3.1) << endl; //ERROR have info loss    
         
     vector<vector<int>> mv{
         {1}, 
@@ -42,7 +52,11 @@ catch(out_of_range& ex){
     cerr << "error: " << ex.what() << endl;
     return 1;
 }
+catch(runtime_error& re){
+    cerr << "runtime error: " << re.what() << endl;
+    return 2;
+}
 catch(...){
     cerr << "Have unknown errors" << endl;
-    return 2;
+    return -1;
 }
