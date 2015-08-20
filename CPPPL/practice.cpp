@@ -20,11 +20,7 @@ int main(){
     mv.push_back({7, 8, 9, 0});
     //cout << mv.size() << endl;
     //cout << mv[3][2] << endl;
-    
-<<<<<<< HEAD
-     return 0;
-}
-=======
+
     vector<string> words;
     cout << "Input words: ";
     for(string temp; cin >> temp; )
@@ -39,12 +35,3 @@ int main(){
     cout << endl;
     return 0;
 }
-
-
-
-
-
-
-
-
->>>>>>> 38b3c471ed9eeb0c72da82d15356c0c55301e9b8
