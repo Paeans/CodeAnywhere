@@ -12,8 +12,8 @@ do
         echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
         echo 
         exit 1
-    )    
-    echo "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
+    )
+    echo "**************************************"
     echo 
 done
 
