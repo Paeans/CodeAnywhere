@@ -18,7 +18,7 @@ for mainfile in ${mainfilelist}
 do
     mainname=${mainfile%.cpp}
     echo "Compile" ${mainfile};
-    g++ -std=c++0x -o ${mainname}.out ${mainfile} ${cppfilelist} && (     
+    g++ -std=c++11 -o ${mainname}.out ${mainfile} ${cppfilelist} && (     
             echo "Excute"  ${mainname}.out; 
             echo "**************************************";
             ./${mainname}.out;
