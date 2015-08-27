@@ -1,5 +1,5 @@
 #ifndef CAL_H
-#def CAL_H
+#define CAL_H
 
 #include <iostream>
 #include <stdexcept>
