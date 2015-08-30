@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstring>
 #include "pector.h"
+#include "calculator.h"
 
 using namespace std;
 
@@ -16,9 +17,8 @@ int My_code::main(){
 
 int main(){
     
-    cout << "test program" << endl;
-    
-    My_code::main(); 
+    //My_code::main(); 
+    calculator();
     
     return 0;    
 }

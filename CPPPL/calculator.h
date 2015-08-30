@@ -26,4 +26,6 @@ private:
     Token buffer;
 };
 
+int calculator();
+
 #endif

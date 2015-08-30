@@ -2,17 +2,8 @@
 
 Token_Stream ts;
 
-int main()
+int calculator()
 try{
-    
-    //Token t{'a', 0.1};
-    //cout << t.kind << " " << t.value << endl;
-    //Token_Stream ts;
-    //Token t;
-    //do{
-    //    t = ts.get();
-    //    cout << t.kind << " " << t.value << endl;
-    //}while(t.kind != 'q');
     
     double result = 0;
     while(cin){
