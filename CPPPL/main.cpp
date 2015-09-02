@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <cstring>
-#include "pector.h"
+#include "practice.h"
 #include "calculator.h"
 
 using namespace std;
@@ -18,7 +18,8 @@ int My_code::main(){
 int main(){
     
     //My_code::main(); 
-    calculator();
+    //calculator();
+    practice();
     
     return 0;    
 }

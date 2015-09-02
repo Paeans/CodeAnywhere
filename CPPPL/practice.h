@@ -1,4 +1,9 @@
 
+template<class R, class T> 
+    R narrow_cast(const T& a);
+    
+int practice();
+
 class Pector{
 public:
     Pector(int num);
