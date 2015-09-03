@@ -2,31 +2,23 @@
 
 Token_Stream ts;
 
-int calculator()
-try{
-    
-    double result = 0;
-    while(cin){
-        Token t = ts.get();
-        if(t.kind == 'q') break;
-        if(t.kind == ';') 
-            cout << "=" << result << endl;
-        else
-            ts.putback(t);
-        result = expression();
+void calculator(){
+    while(cin)
+    try{
+        Token t = ts.get();       
+        while(t.kind == ';') t = ts.get();        
+        if(t.kind == 'q') return; 
+        ts.putback(t);
+        cout << "-> " << statement() << endl;
     }
-    
-    return 0;
-}
-catch(runtime_error& ex){
-    ts.ignore(';');
-    cout << ex.what() << endl;
-    return 1;
-}
-catch(...){
-    ts.ignore(';');
-    cout << "UNKNOWN ERROR in calculator" <<endl;
-    return -1;
+    catch(runtime_error& ex){
+        ts.ignore(';');
+        cout << ex.what() << endl;
+    }
+    catch(...){
+        ts.ignore(';');
+        cout << "UNKNOWN ERROR in calculator" <<endl;
+    }
 }
 
 Token Token_Stream::get(){
@@ -89,6 +81,21 @@ void Var_Table::set_value(string key, double value){
             return;
         }
     throw runtime_error("set: undefined variable: " + key);
+}
+
+double statement(){
+    Token t = ts.get();
+    switch(t.kind){
+        case let:
+            return declaration();
+        default:
+            ts.putback(t);
+            return expression();
+    }
+}
+
+double declaration(){
+    return 0;
 }
 
 double primary(){

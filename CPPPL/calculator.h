@@ -58,6 +58,8 @@
 
 using namespace std;
 
+double statement();
+double declaration(); //TODO
 double primary();
 double term();
 double expression();
@@ -104,6 +106,6 @@ private:
     vector<Variable> var_table;
 };
 
-int calculator();
+void calculator();
 
 #endif
