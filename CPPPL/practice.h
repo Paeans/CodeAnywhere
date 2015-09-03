@@ -1,4 +1,7 @@
 
+#ifndef PRAC_H
+#define PRAC_H
+
 template<class R, class T> 
     R narrow_cast(const T& a);
     
@@ -15,3 +18,6 @@ private:
 };
 
 double read_and_sum(int n);
+
+
+#endif

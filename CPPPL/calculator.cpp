@@ -1,4 +1,10 @@
+
+#include <iostream>
+#include <string>
+#include <stdexcept>
 #include "calculator.h"
+
+using namespace std;
 
 Token_Stream ts;
 

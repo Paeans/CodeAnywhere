@@ -51,10 +51,7 @@
 #ifndef CAL_H
 #define CAL_H
 
-#include <iostream>
-#include <string>
 #include <vector>
-#include <stdexcept>
 
 using namespace std;
 
