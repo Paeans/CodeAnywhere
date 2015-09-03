@@ -53,6 +53,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <stdexcept>
 
 using namespace std;
@@ -87,6 +88,20 @@ public:
 private:
     bool full{false};
     Token buffer;
+};
+
+class Variable{
+public:
+    string name;
+    double value;
+};
+
+class Var_Table{
+public:
+    double get_value(string key);
+    void set_value(string key, double value);
+private:
+    vector<Variable> var_table;
 };
 
 int calculator();

@@ -76,6 +76,21 @@ void Token_Stream::ignore(char c){
     return;
 }
 
+double Var_Table::get_value(string key){
+    for(const Variable& v : var_table)
+        if(v.name == key) return v.value;
+    throw runtime_error("get: undefined variable: " + key);
+}
+
+void Var_Table::set_value(string key, double value){
+    for(Variable& v : var_table)
+        if(v.name == key){
+            v.value = value;
+            return;
+        }
+    throw runtime_error("set: undefined variable: " + key);
+}
+
 double primary(){
     Token t = ts.get();
     switch(t.kind){
