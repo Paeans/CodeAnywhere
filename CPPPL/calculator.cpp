@@ -19,10 +19,12 @@ try{
     return 0;
 }
 catch(runtime_error& ex){
+    ts.ignore(';');
     cout << ex.what() << endl;
     return 1;
 }
 catch(...){
+    ts.ignore(';');
     cout << "UNKNOWN ERROR in calculator" <<endl;
     return -1;
 }
@@ -45,10 +47,17 @@ Token Token_Stream::get(){
             cin.putback(ch);
             double value;
             cin >> value;
-            return Token{'8', value};
+            return Token{number, value};
         }
         
         default:
+            if(isalpha(ch)){
+                cin.putback(ch);
+                string s;
+                cin >> s;
+                if(s == declkey) return Token(let);
+                return Token(name, s);
+            }
             throw runtime_error("Bad Token");
     }
 }
@@ -58,6 +67,13 @@ void Token_Stream::putback(Token t){
         throw runtime_error("putback to full buffer");
     buffer = t;
     full = true;
+}
+
+void Token_Stream::ignore(char c){
+    if(!full) cin >> buffer.kind;
+    else full = false;
+    while(buffer.kind != c && cin >> buffer.kind);
+    return;
 }
 
 double primary(){
@@ -71,7 +87,7 @@ double primary(){
             return e;
         }
         
-        case '8':
+        case number:
             return t.value;
         
         case ';':

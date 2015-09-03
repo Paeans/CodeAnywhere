@@ -18,8 +18,8 @@ int My_code::main(){
 int main(){
     
     //My_code::main(); 
-    //calculator();
-    practice();
+    calculator();
+    //practice();
     
     return 0;    
 }
