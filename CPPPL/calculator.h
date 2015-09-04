@@ -56,7 +56,7 @@
 using namespace std;
 
 double statement();
-double declaration(); //TODO
+double declaration(); 
 double primary();
 double term();
 double expression();
