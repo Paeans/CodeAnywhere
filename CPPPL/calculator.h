@@ -99,6 +99,9 @@ class Var_Table{
 public:
     double get_value(string key);
     void set_value(string key, double value);
+    
+    bool is_defined(string key);
+    double define_name(string key, double value);
 private:
     vector<Variable> var_table;
 };

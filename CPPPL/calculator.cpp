@@ -7,6 +7,7 @@
 using namespace std;
 
 Token_Stream ts;
+Var_Table var_table;
 
 void calculator(){
     while(cin)
@@ -89,6 +90,19 @@ void Var_Table::set_value(string key, double value){
     throw runtime_error("set: undefined variable: " + key);
 }
 
+bool Var_Table::is_defined(string key){
+    for(const Variable& v : var_table)
+        if(v.name == key) return true;
+    return false;
+}
+
+double Var_Table::define_name(string key, double val){
+    if(is_defined(key)) 
+        throw runtime_error(key + " defined twice");
+    var_table.push_back(Variable{key, val});
+    return val;
+}
+
 double statement(){
     Token t = ts.get();
     switch(t.kind){
@@ -101,7 +115,12 @@ double statement(){
 }
 
 double declaration(){
-    return 0;
+    Token t = ts.get();
+    if(t.kind != name) 
+        throw runtime_error("name expected");
+    if(ts.get().kind != '=')
+        throw runtime_error("= is missing");
+    return var_table.define_name(t.name, expression());
 }
 
 double primary(){
