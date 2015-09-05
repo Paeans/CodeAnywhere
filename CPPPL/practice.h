@@ -19,5 +19,4 @@ private:
 
 double read_and_sum(int n);
 
-
 #endif
