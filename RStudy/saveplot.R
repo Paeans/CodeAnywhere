@@ -6,7 +6,7 @@
 
 #! /path/to/Rscript
 
-jpeg(file = "myplot.jpeg")
+jpeg(file = "saveplot.jpeg")
 
 op <- par(mfrow = c(2, 2))
 hist(islands)
