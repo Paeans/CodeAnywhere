@@ -36,3 +36,7 @@ q(status=0)
 #WMF	        win.metafile	Windows only; best choice with Word; easily resizable
 #PDF	        pdf	          Best choice with pdflatex; easily resizable
 #Postscript  postscript	  Best choice with latex and Open Office; easily resizable
+
+## read table to R and change to vector
+# d<-read.table("filename")
+# r<-unlist(d)
