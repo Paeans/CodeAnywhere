@@ -9,7 +9,7 @@
 for i in `seq $(( $num * $num ))`
 do
   [[ $(( $RANDOM % 10 )) > 4 ]] && tag="+" || tag="-"
-  echo -n -e ${tag}0.$(( ${RANDOM}**3%1000000 ))\\t >> $file
+  echo -n -e ${tag}0.$(( ${RANDOM}**2%1000000 ))\\t >> $file
   [[ $(( $i % $num)) == 0 ]] && echo >> $file
 done
 
