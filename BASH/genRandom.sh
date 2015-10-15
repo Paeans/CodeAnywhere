@@ -6,10 +6,15 @@
 [[ $1 == "" ]] && file="data.txt" || file=$1
 [[ $2 == "" ]] && num=100 || num=$2
 
-for i in `seq $(( $num * $num ))`
+for i in `seq $num`
 do
-  [[ $(( $RANDOM % 10 )) > 4 ]] && tag="+" || tag="-"
-  echo -n -e ${tag}0.$(( ${RANDOM} % 1000 ))\\t >> $file
-  [[ $(( $i % $num)) == 0 ]] && echo >> $file
+  #for j in `seq $(( $num * $num ))`
+  for j in `seq $num`
+  do
+    [[ $(( $RANDOM % 10 )) > 4 ]] && tag="+" || tag="-"
+    echo -n -e ${tag}0.$(( ${RANDOM} % 1000 ))\\t >> $file
+    #[[ $(( $i % $num)) == 0 ]] && echo >> $file
+  done
+  echo >> $file
 done
 
