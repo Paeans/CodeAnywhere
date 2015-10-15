@@ -7,7 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
-
+#include <cstdlib>
+  
 using namespace std;
 
 void * multim(double* fm, double* sm, int size);
@@ -59,5 +60,7 @@ void * multim(double* fm, double* sm, int size){
     for(int n=0; n < size; n++)
       fm[m*size + n] = rlist[m][n];
   }
+  
+  return NULL;
 }
 
