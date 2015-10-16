@@ -15,10 +15,6 @@
 
 using namespace std;
 
-#if defined(__cplusplus)
-extern "C"
-#endif
-
 int test_pthread(int thread_num);
 
 int main(int argc, char* argv[]){
