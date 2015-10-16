@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
   
   double* matrix = new double[matrix_size * matrix_size];  
   double* rev_ma = new double[matrix_size * matrix_size]; 
-  
+    
   ifstream infile;
   infile.open("matrix.txt");
   double d = 0;
