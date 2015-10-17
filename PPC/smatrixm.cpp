@@ -33,12 +33,12 @@ int main(int argc, char* argv[]){
 
   infile.close();
   
-  clock_t t = clock(); 
+  //clock_t t = clock(); 
   int multi_num = 2;
   for(int i=0; i < multi_num; i++)
     multim(matrix, rev_ma, matrix_size);
-  t = clock() - t;
-  cout << t << " ";
+  //t = clock() - t;
+  //cout << t << " ";
   
   delete matrix;
   delete rev_ma;

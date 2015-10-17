@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
   pthread_t *pthread_list = (pthread_t *)malloc(sizeof(pthread_t) * thread_num);
   int worksize = matrix_size / thread_num;
   
-  clock_t t = clock(); 
+  //clock_t t = clock(); 
   
   int multi_num = 2;
   while(multi_num-- > 0){
@@ -71,8 +71,8 @@ int main(int argc, char* argv[]){
     }
   }
   
-  t = clock() - t;
-  cout << t << " ";
+  //t = clock() - t;
+  //cout << t << " ";
   
   /**
    ** Out put result matrix
