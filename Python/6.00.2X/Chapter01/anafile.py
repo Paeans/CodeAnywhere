@@ -19,7 +19,6 @@ def loadFile():
     
 def producePlot(lowTemps, highTemps):
     diffTemps = list(np.array(highTemps) - np.array(lowTemps))
-    pylab.figure(1)
     pylab.plot(range(1,32), diffTemps)
     pylab.title('Day by Day Ranges in Temperature in Boston in July 2012')
     pylab.xlabel('Days')
