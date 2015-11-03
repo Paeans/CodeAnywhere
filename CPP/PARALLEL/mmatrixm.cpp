@@ -8,6 +8,7 @@ using namespace std;
 
 void multimatrix(double* matrix_a, double* matrix_b, double* result, 
                  int matrix_size, int lines);
+void addmatrix(double* matrix_r, double* matrix_a, int size);
 
 int main(int argc, char* argv[]){
   
@@ -96,3 +97,13 @@ void multimatrix(double* matrix_a, double* matrix_b, double* result,
     }
   }
 }
+
+void addmatrix(double* matrix_r, double* matrix_a, int size){
+
+  for(int i=0; i<size; i++){
+    for(int j=0; j<size; j++){
+      matrix_r[i*size + j] += matrix_a[i*size +j];
+    }
+  }
+}
+
