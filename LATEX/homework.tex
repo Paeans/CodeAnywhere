@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+
+\title{Homework of Theory of Computation}
+\author{\Large \textbf{Pan Gaofeng \hspace{2cm} 2015216027}}
+\date{November 2015}
+
+\begin{document}
+\Large
+\maketitle
+
+\section{Prove}
+
+Prove those language is recursive 
+
+(1) $\Phi$ 
+
+(2) $\{\lambda\}$, \hspace{0.25cm}$\lambda$ is empty string 
+
+(3) $\Sigma^\ast$ 
+
+\section{Design TM}
+Design a TM, implement the minus between two integers
+$$x\dot{-}y = \Bigg\{ 
+  \begin{tabular}{cc}
+  $x - y, \hspace{0.25cm} x \ge y$ \\
+  $0, \hspace{1cm} Other $
+  \end{tabular} 
+  , \hspace{1cm}( x, y \in \mathbb{Z}^+ )
+$$
+
+Solution:
+
+(1) Encode\hspace{0.25cm}$< \cdot >$
+
+\hspace{0.5cm}$< x > \to 1^x$ 
+
+\hspace{0.5cm}$< y > \to 1^y$ 
+
+\hspace{0.5cm}$< \dot{-} > \to \#$
+
+\vspace{5mm} 
+ 
+(2) Process
+
+\hspace{0.5cm}Define TM 
+$$M = \{Q, \Sigma, \Gamma, \delta, q_0, q_accept, q_reject \}$$
+
+\hspace{0.5cm}$Q = \{q_0, q_1, q_2, q_3, q_4, q_{accept}, q_{reject}\}$
+
+\hspace{0.5cm}$\Sigma = \{1, \#\}$
+
+\hspace{0.5cm}$\Gamma = \Sigma \cup \{\sqcup, \dot{1}\}$
+
+\hspace{0.5cm}$\delta$ is $Q \times \Gamma \to Q \times \Gamma \times \{L, R\}$ \\
+$\delta = \Bigg\{
+    \begin{tabular}{cc}
+    $(q_0, 1) \to (q_1, \sqcup, R), \hspace{0.25cm}(q_0, \#) \to (q_{reject}, \#, R)$\\ 
+    $(q_0, \sqcup) \to (q_{reject}, \sqcup, R), \hspace{0.25cm}(q_0, \dot{1}) \to (q_{reject}, \dot{1}, R)$\\
+    $(q_1, 1) \to (q_1, 1, R), \hspace{0.25cm}(q_1, \#) \to (q_3, \#, R)$\\
+    $(q_1, \sqcup) \to (q_{reject}, \sqcup, R), \hspace{0.25cm}(q_1, \dot{1}) \to (q_1, \dot{1}, R)$\\
+    $(q_2, 1) \to (q_1, \dot{1}, R), \hspace{0.25cm}(q_2, \#) \to (q_{reject}, \#, L)$\\
+    $(q_2, \sqcup) \to (q_{accept}, \dot{1}, R), \hspace{0.25cm}(q_2, \dot{1}) \to (q_2, \dot{1}, L)$\\
+    $(q_3, 1) \to (q_4, \dot{1}, L), \hspace{0.25cm}(q_3, \#) \to (q_{reject}, \#, R)$\\
+    $(q_3, \sqcup) \to (q_{accept}, \sqcup, R), \hspace{0.25cm}(q_3, \dot{1}) \to (q_3, \dot{1}, R)$\\
+    $(q_4, 1) \to (q_{reject}, 1, R), \hspace{0.25cm}(q_4, \#) \to (q_2, \#, L)$\\
+    $(q_4, \sqcup) \to (q_{reject}, \sqcup, R), \hspace{0.25cm}(q_4, \dot{1}) \to (q_4, \dot{1}, L)$
+    \end{tabular} 
+\Bigg\}$
+
+\hspace{0.5cm}$q_0$ is start state
+
+\hspace{0.5cm}$q_{accept}$ is accept state
+
+\hspace{0.5cm}$q_{reject}$ is reject state
+
+\hspace{0.5cm}$q_1$ is head on the left of \# and move to right
+
+\hspace{0.5cm}$q_2$ is head on the left of \# and move to left
+
+\hspace{0.5cm}$q_3$ is head on the right of \# and move to right
+
+\hspace{0.5cm}$q_4$ is head on the right of \# and move to left
+
+\vspace{5mm}
+
+(3) Decode 
+
+\hspace{0.5cm}The length of 1s from the start of the tape to the first $\dot{1}$ is the result of $x \dot{-} y$.
+ 
+\vspace{5mm}
+
+\end{document}
+
