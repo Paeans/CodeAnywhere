@@ -16,9 +16,63 @@ Prove these language is recursive
 
 (1) $\Phi$ 
 
+\hspace{0.5cm}Define TM 
+$$M = \{Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject} \}$$ 
+
+\hspace{0.5cm}Set 
+
+\hspace{1cm}$Q = \{q_0, q_{accept}, q_{reject}\}$
+
+\hspace{1cm}$\Gamma = \Sigma \cup \{\sqcup\}$
+
+\hspace{1cm}$\delta = \{(q_0, \gamma) \to (q_{reject}, \gamma, R)\}, \hspace{0.25cm} \forall \gamma \in \Gamma$
+
+\vspace{5mm}
+
+\hspace{0.5cm}Language can be recognized by M is $\Phi$, and $\forall \omega \notin \Phi$, M will reject
+
+\hspace{0.5cm}$\Rightarrow$ $\Phi$ is recursive
+
+\vspace{5mm}
+
 (2) $\{\lambda\}$, \hspace{0.25cm}$\lambda$ is empty string 
 
+\hspace{0.5cm}In the TM of (1)
+
+\vspace{5mm}
+
+\hspace{0.5cm}Set 
+
+\hspace{1cm}$\delta = \Bigg\{
+    \begin{tabular}{cc}
+        $(q_0, \sqcup) \to (q_{accept}, \sqcup, R)$ \\
+        $(q_0, \gamma) \to (q_{reject}, \gamma, R)$
+    \end{tabular} 
+\Bigg\}$
+
+\hspace{1cm}$\forall \gamma \in \Gamma$ and $\gamma \neq \sqcup$
+
+\vspace{5mm}
+
+\hspace{0.5cm}If the input $\omega$ is empty string, M will change from $(q_0, \sqcup)$ to $(q_{accept}, \sqcup, R)$, otherwise will be $q_{reject}$.
+
+\hspace{0.5cm}$\Rightarrow$ $\{\lambda\}$ is recursive.
+
+\vspace{5mm}
+
 (3) $\Sigma^\ast$ 
+
+\hspace{0.5cm}$\Sigma^\ast$ is the complement of $\Phi$
+
+\hspace{1cm} $\Phi$ is recursive 
+
+\hspace{0.5cm}$\Leftrightarrow$ $\Phi$ is $\emph{re.}$ and $\bar{\Phi}$ is $\emph{re.}$
+
+\hspace{0.5cm}$\Leftrightarrow$ $\bar{\Phi}$ is recursive
+
+\hspace{0.5cm}$\Leftrightarrow$ $\Sigma^\ast$ is recursive
+
+\vspace{5mm}
 
 \section{Design TM}
 Design a TM, implement the minus between two integers
@@ -45,35 +99,40 @@ Solution:
 (2) Process
 
 \hspace{0.5cm}Define TM 
-$$M = \{Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject} \}$$
+$$M = \{Q, \Sigma, \Gamma, \delta, q_0, q_a, q_r \}$$
 
-\hspace{0.5cm}$Q = \{q_0, q_1, q_2, q_3, q_4, q_{accept}, q_{reject}\}$
+\hspace{0.5cm}$Q = \{q_0, q_1, q_2, q_3, q_4, q_a, q_r\}$
 
 \hspace{0.5cm}$\Sigma = \{1, \#\}$
 
 \hspace{0.5cm}$\Gamma = \Sigma \cup \{\sqcup, \dot{1}\}$
 
-\hspace{0.5cm}$\delta$ is $Q \times \Gamma \to Q \times \Gamma \times \{L, R\}$ \\
+\hspace{0.5cm}$\delta$ is $Q \times \Gamma \to Q \times \Gamma \times \{L, R\}$ 
+
+\vspace{5mm} 
+
 $\delta = \Bigg\{
     \begin{tabular}{cc}
-    $(q_0, 1) \to (q_1, \sqcup, R), \hspace{0.25cm}(q_0, \#) \to (q_{reject}, \#, R)$\\ 
-    $(q_0, \sqcup) \to (q_{reject}, \sqcup, R), \hspace{0.25cm}(q_0, \dot{1}) \to (q_{reject}, \dot{1}, R)$\\
+    $(q_0, 1) \to (q_1, \sqcup, R), \hspace{0.25cm}(q_0, \#) \to (q_r, \#, R)$\\ 
+    $(q_0, \sqcup) \to (q_r, \sqcup, R), \hspace{0.25cm}(q_0, \dot{1}) \to (q_r, \dot{1}, R)$\\
     $(q_1, 1) \to (q_1, 1, R), \hspace{0.25cm}(q_1, \#) \to (q_3, \#, R)$\\
-    $(q_1, \sqcup) \to (q_{reject}, \sqcup, R), \hspace{0.25cm}(q_1, \dot{1}) \to (q_1, \dot{1}, R)$\\
-    $(q_2, 1) \to (q_1, \dot{1}, R), \hspace{0.25cm}(q_2, \#) \to (q_{reject}, \#, L)$\\
-    $(q_2, \sqcup) \to (q_{accept}, \dot{1}, R), \hspace{0.25cm}(q_2, \dot{1}) \to (q_2, \dot{1}, L)$\\
-    $(q_3, 1) \to (q_4, \dot{1}, L), \hspace{0.25cm}(q_3, \#) \to (q_{reject}, \#, R)$\\
-    $(q_3, \sqcup) \to (q_{accept}, \sqcup, R), \hspace{0.25cm}(q_3, \dot{1}) \to (q_3, \dot{1}, R)$\\
-    $(q_4, 1) \to (q_{reject}, 1, R), \hspace{0.25cm}(q_4, \#) \to (q_2, \#, L)$\\
-    $(q_4, \sqcup) \to (q_{reject}, \sqcup, R), \hspace{0.25cm}(q_4, \dot{1}) \to (q_4, \dot{1}, L)$
+    $(q_1, \sqcup) \to (q_r, \sqcup, R), \hspace{0.25cm}(q_1, \dot{1}) \to (q_1, \dot{1}, R)$\\
+    $(q_2, 1) \to (q_1, \dot{1}, R), \hspace{0.25cm}(q_2, \#) \to (q_r, \#, L)$\\
+    $(q_2, \sqcup) \to (q_a, \dot{1}, R), \hspace{0.25cm}(q_2, \dot{1}) \to (q_2, \dot{1}, L)$\\
+    $(q_3, 1) \to (q_4, \dot{1}, L), \hspace{0.25cm}(q_3, \#) \to (q_r, \#, R)$\\
+    $(q_3, \sqcup) \to (q_a, \sqcup, R), \hspace{0.25cm}(q_3, \dot{1}) \to (q_3, \dot{1}, R)$\\
+    $(q_4, 1) \to (q_r, 1, R), \hspace{0.25cm}(q_4, \#) \to (q_2, \#, L)$\\
+    $(q_4, \sqcup) \to (q_r, \sqcup, R), \hspace{0.25cm}(q_4, \dot{1}) \to (q_4, \dot{1}, L)$
     \end{tabular} 
 \Bigg\}$
 
-\hspace{0.5cm}$q_0$ is start state
+\vspace{5mm} 
 
-\hspace{0.5cm}$q_{accept}$ is accept state
+\hspace{0.5cm}$q_0$ is $\emph{start}$ state
 
-\hspace{0.5cm}$q_{reject}$ is reject state
+\hspace{0.5cm}$q_a$ is $\emph{accept}$ state
+
+\hspace{0.5cm}$q_r$ is $\emph{reject}$ state
 
 \hspace{0.5cm}$q_1$ is head on the left of \# and move to right
 
