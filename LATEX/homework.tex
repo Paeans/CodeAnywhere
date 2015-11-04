@@ -210,11 +210,59 @@ $$L = \{ {\omega} = {\omega}_1{\omega}_2 \mid {\omega}_1 \in L_1, {\omega}_2 \in
 
 \vspace{5mm}
 
-\hspace{0.5cm}(3)
+\hspace{0.5cm}(4.7) $T = \{(i, j, k) \mid i, j, k \in \mathbb{N})$
+
+\hspace{1.5cm} Prove T is countable
 
 \vspace{5mm}
 
-\hspace{0.5cm}(4)
+\hspace{0.5cm}Let $f(i, j, k) = a^ib^jc^k$, \hspace{0.25cm} $\Bigg($
+\begin{tabular}{cc}
+  $a \not= b \not= c$ \\
+  $a, b, c$ is Prime
+  \end{tabular} 
+$\Bigg)$
+
+\hspace{0.5cm}Prove:
+
+\hspace{0.5cm}if $\exists (i, j, k) \not= (l, m, n)$ but $f(i, j, k) == f(l, m, n)$
+
+\hspace{0.5cm}$\Rightarrow$ $a^ib^jc^k = a^lb^mc^n$
+
+\hspace{0.5cm}$\Rightarrow$ $a^{i-l} = b^{m-j}c^{n-k}$
+
+\hspace{0.5cm} contradict to $a, b, c$ is Prime
+
+\hspace{0.5cm} $(i, j, k) \to \mathbb{N}\setminus\{Prime\}\cup\{a, b, c\}$ is one-to-one
+
+\hspace{0.5cm} $(i, j, k)$ is countable
+
+\vspace{5mm}
+
+\hspace{0.5cm}(4.18) Two language $A$ and $B$, $A \cap B = \Phi$
+
+\hspace{1.75cm} TM $M_1$ recognize $\bar{A}$, TM $M_2$ recognize $\bar{B}$
+
+\hspace{1.75cm} Prove: $\exists$ TM $M$
+
+\hspace{2cm} language C decided by $M$
+
+\hspace{2cm} $A \subseteq C$ and $B \subseteq \bar{C}$
+
+\vspace{5mm}
+
+\hspace{0.5cm} Design two tape TM $M_p$, on each tape simulate $M_1$ and $M_2$ $\emph{parallel}$
+ 
+$$M_p = \Bigg\{
+\begin{tabular}{cc}
+  $\emph{reject}$; \hspace{0.5cm} $M_1$ accept \\
+  $\emph{accept}$; \hspace{0.5cm} $M_2$ accept
+  \end{tabular} 
+$$
+
+\hspace{0.5cm} $\Rightarrow$ $A$ will accept by $M_p$, $B$ will reject by $M_p$
+
+\hspace{0.5cm} $\Rightarrow$ $A \subseteq C$ and $B \subseteq \bar{C}$
 
 \vspace{5mm}
 
