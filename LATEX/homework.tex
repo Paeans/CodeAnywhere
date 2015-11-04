@@ -29,7 +29,9 @@ $$M = \{Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject} \}$$
 
 \vspace{5mm}
 
-\hspace{0.5cm}Language can be recognized by M is $\Phi$, and $\forall \omega \notin \Phi$, M will reject
+\hspace{0.5cm}Language can be recognized by M is $\Phi$, 
+
+\hspace{0.5cm}and $\forall \omega \notin \Phi$, M will reject
 
 \hspace{0.5cm}$\Rightarrow$ $\Phi$ is recursive
 
@@ -176,7 +178,35 @@ $\to$ ${\sqcup}xxx0q_3x{\sqcup}$ $\to$ ${\sqcup}xxx0xq_3{\sqcup}$ $\to$ ${\sqcup
 
 \vspace{5mm}
 
-\hspace{0.5cm}(2)
+\hspace{0.5cm}(3.15) Language $L_1$ and $L_2$ is decidable
+
+\hspace{0.5cm}Language 
+
+$$L = \{ {\omega} = {\omega}_1{\omega}_2 \mid {\omega}_1 \in L_1, {\omega}_2 \in L_2 \}$$
+
+\hspace{0.5cm}is decidable
+
+\vspace{5mm}
+
+\hspace{0.5cm} $L_1$ and $L_2$ is decidable
+
+\hspace{0.5cm} let TM $M_1$ decide $L_1$, TM $M_2$ decide $L_2$
+
+\hspace{0.5cm} M = "on input $\omega$:
+
+\hspace{2cm} Cut $\omega$ into 2 parts ${\omega}_1$ and ${\omega}_2$, 
+
+\hspace{2cm} there are $|\omega| + 1$ ways to cut
+
+\hspace{2cm} For each cut way
+
+\hspace{2.5cm}Run $M_1$ on ${\omega}_1$
+
+\hspace{2.5cm}Run $M_2$ on ${\omega}_2$
+
+\hspace{2.5cm}if $M_1$ and $M_2$ accept $\to$ M accept
+
+\hspace{2cm} M reject "
 
 \vspace{5mm}
 
