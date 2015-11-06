@@ -21,9 +21,9 @@ int main(int argc, char* argv[]){
 	for (int i = 0; i < matrix_size * matrix_size; i++){
 		infile >> d;
 		matrix[i] = result[i] = d;
-		cout << d << " ";	
+		//cout << d << " ";	
 	}
-	cout << endl;
+
 	infile.close();
 
 	double *d_matrix_1, *d_matrix_2, *d_result;
@@ -31,18 +31,22 @@ int main(int argc, char* argv[]){
 	cudaMalloc(&d_matrix_2, mem_size);
 	cudaMalloc(&d_result, mem_size);
 
-	int multime = 2;
+	int multime = 10;
+	clock_t t = clock();
 	for (int i = 0; i<multime; i++){
 		cudaMemcpy(d_matrix_1, result, mem_size, cudaMemcpyHostToDevice);
 		cudaMemcpy(d_matrix_2, matrix, mem_size, cudaMemcpyHostToDevice);
 		d_matrixm << < matrix_size, matrix_size >> >(d_matrix_1, d_matrix_2, d_result);
 		cudaMemcpy(result, d_result, mem_size, cudaMemcpyDeviceToHost);
 	}
+	t = clock() - t;
+	cout << t << endl;
 
-	for (int i = 0; i < matrix_size * matrix_size; i++){
-		cout << result[i] << " ";
+	/*for (int i = 0; i < matrix_size * matrix_size; i++){
+	cout << result[i] << " ";
 	}
-	cout << endl;
+	cout << endl;*/
+
 	return 0;
 }
 
@@ -53,5 +57,5 @@ __global__ void d_matrixm(double* matrix_1, double* matrix_2, double* result){
 	for (int i = 0; i < size; i++){
 		result[blockIdx.x * size + threadIdx.x] +=
 			matrix_1[blockIdx.x * size + i] * matrix_2[threadIdx.x + i * size];
-	}	
+	}
 }
