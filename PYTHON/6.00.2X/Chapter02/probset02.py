@@ -245,7 +245,17 @@ def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
     robot_type: class of robot to be instantiated (e.g. StandardRobot or
                 RandomWalkRobot)
     """
-    raise NotImplementedError
+    counter = 0.0
+    for k in range(num_trials):
+        room = RectangularRoom(width, height)
+        robotlist = []
+        for i in range(num_robots):
+            robotlist.append(robot_type(room, speed))
+        while room.getNumCleanedTiles() * 1.0 / room.getNumTiles() <= min_coverage:
+            for i in range(num_robots):
+                robotlist[i].updatePositionAndClean()
+            counter += 1
+    return counter / num_trials
 
 # === Problem 4
 class RandomWalkRobot(Robot):
@@ -260,8 +270,13 @@ class RandomWalkRobot(Robot):
         Move the robot to a new position and mark the tile it is on as having
         been cleaned.
         """
-        raise NotImplementedError
-
+        while(True):
+            newpos = self.pos.getNewPosition(self.direction, self.speed)
+            self.direction = random.randint(0, 360 - 1)
+            if(self.room.isPositionInRoom(newpos)):
+                self.room.cleanTileAtPosition(newpos)
+                self.pos = newpos
+                break
 
 def showPlot1(title, x_label, y_label):
     """
