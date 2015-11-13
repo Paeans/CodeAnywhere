@@ -17,11 +17,12 @@ int main(int argc, char* argv[]){
   MPI_Init(&argc, &argv);
   
   int matrix_size = atoi(argv[1]);
-  int multime = atoi(argv[2]);  
+  int multime = 3;  
   
-  int rank, prosize;
+  int rank = 0;
+  int prosize = 0;
   
-  MPI_Comm_size(MPI_COMM_WORLD, &prosize)
+  MPI_Comm_size(MPI_COMM_WORLD, &prosize);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   
   if(rank == 0){
@@ -77,8 +78,8 @@ int main(int argc, char* argv[]){
     double* result = (double*)malloc(sizeof(double) * lines[0] * lines[0]);
     double* matrix_a = (double*)malloc(sizeof(double) * lines[0] * lines[1]);
     double* matrix_b = (double*)malloc(sizeof(double) * lines[0] * lines[1]);
-    MPI_Recv(matrix_a, lines[0] * lines[1], MPI_DOUBLE, 0, 1, MPI_COMM_WORLD);
-    MPI_Recv(matrix_b, lines[0] * lines[1], MPI_DOUBLE, 0, 2, MPI_COMM_WORLD);
+    MPI_Recv(matrix_a, lines[0] * lines[1], MPI_DOUBLE, 0, 1, MPI_COMM_WORLD, &status);
+    MPI_Recv(matrix_b, lines[0] * lines[1], MPI_DOUBLE, 0, 2, MPI_COMM_WORLD, &status);
     multimatrix(matrix_a, matrix_b, result, lines[0], lines[1]);
     
     MPI_Send(result, lines[0] * lines[0], MPI_DOUBLE, 0, 3, MPI_COMM_WORLD);
@@ -95,18 +96,10 @@ void multimatrix(double* matrix_a, double* matrix_b, double* result,
                  int matrix_size, int lines){
   
   memset(result, matrix_size * matrix_size * sizeof(double), 0);
-  for(int k=0; k<lines; k++){
-    
-    for(int i=0; i<matrix_size; i++){
-      
-      for(int j=0; j<matrix_size; j++){
-        res[i*matrix_size + j] += matrix_a[k * matrix_size + i] * matrix_b[k * matrix_size + j];
-      }
-    }
-  }
+
   for(int i=0; i<matrix_size; i++){
     for(int j=0; j<matrix_size; j++){
-      result[i][j] = 0;
+      result[i * matrix_size + j] = 0;
       for(int k = 0; k<lines; k++){
         result[i * matrix_size + j] += matrix_a[k*matrix_size + i] * matrix_b[k*matrix_size + j];
       }
