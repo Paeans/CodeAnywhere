@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+
+\title{Homework of Cloud Computing}
+\author{\Large \textbf{2015216027 \hspace{2cm} Pan Gaofeng}}
+\date{December 01 2015}
+
+\begin{document}
+
+\Large
+\maketitle
+
+\section{ Q: Please describe the service models of Cloud Computing}
+
+\hspace{1cm}\textbf{A: } There are 3 types of service model of Cloud Computing.
+
+\begin{itemize}
+\item 
+
+\item 
+
+\item
+
+\end{itemize}
+
+
+\vspace{5mm} 
+
+
+\section{ Q: Please describe the deployment models of cloud computing}
+
+\hspace{1cm}\textbf{A: } There are 3 types of deployment model of Cloud Computing.
+\begin{itemize}
+\item 
+
+\item 
+
+\item
+
+\end{itemize}
+
+\end{document}
+
