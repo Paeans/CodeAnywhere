@@ -1,5 +1,6 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+\documentclass[a4paper]{article}
+%\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
 \usepackage{amsfonts}
 
 \title{Homework of Cloud Computing}
@@ -13,14 +14,25 @@
 
 \section{ Q: Please describe the service models of Cloud Computing}
 
-\hspace{1cm}\textbf{A: } There are 3 types of service model of Cloud Computing.
+\hspace{1cm}\textbf{A:} There are 3 service models of Cloud Computing.
 
 \begin{itemize}
-\item 
+\item \textbf{IaaS}: Infrastructure as a Service
 
-\item 
+In this service model, the cloud service providers provide to the customers are fundamental computing resources like storage, network, computer etc. The customers can deploy and run arbitrary software, which include operating systems and applications. 
 
-\item
+With this type of service model, customers can specify what they want the system to do. Many cloud providers have this type of service model, like Amazon Web Service, Windows Azure and Aliyun.
+
+\vspace{2mm} 
+
+\item \textbf{PaaS}: Platform as a Service
+
+
+\vspace{2mm} 
+
+\item \textbf{SaaS}: Software as a Service
+
+\vspace{2mm} 
 
 \end{itemize}
 
@@ -30,13 +42,13 @@
 
 \section{ Q: Please describe the deployment models of cloud computing}
 
-\hspace{1cm}\textbf{A: } There are 3 types of deployment model of Cloud Computing.
+\hspace{1cm}\textbf{A:} There are 3 deployment models of Cloud Computing.
 \begin{itemize}
-\item 
+\item Public
 
-\item 
+\item Private
 
-\item
+\item Hybrid
 
 \end{itemize}
 
