@@ -27,6 +27,8 @@
 #  --executor-memory 4096M
 #  path/to/main.py \
 #  1000
+# 
+# Running on Spark
 
 from pyspark import SparkContext, SparkConf
 
