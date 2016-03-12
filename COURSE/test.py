@@ -123,6 +123,8 @@ def constructMotif(filename):
         
     return motif_list
 
+
+'''
 file = open('TRANSFAC-FINAL.txt', 'r')
 #print constructMotif('TRANSFAC-FINAL.txt')
 
@@ -169,4 +171,17 @@ def sumScoreList(a, b):
     return tmp;
 
 print sumScoreList([1, 3, 4], [7, 9, 3])
+'''
+
+with open("datafortest.txt", 'r') as f:
+    f.seek(100)
+    length = 50
+    genestr = ""
+    while(len(genestr) < length * 2):
+        tmpstr = f.readline().rstrip('\n')
+        genestr = genestr + tmpstr[0 : min(length * 2 - len(genestr), len(tmpstr))]
+    print genestr
+    
+print min(1, 3)
+
 
