@@ -172,7 +172,7 @@ def sumScoreList(a, b):
 
 print sumScoreList([1, 3, 4], [7, 9, 3])
 '''
-
+'''
 with open("datafortest.txt", 'r') as f:
     f.seek(100)
     length = 50
@@ -188,7 +188,16 @@ with open("datafortest.txt", 'r') as f:
         tmpstr = f.readline().rstrip('\n')
         genestr = genestr + tmpstr[0 : min(length * 2 - len(genestr), len(tmpstr))]
     print genestr
-    
+'''    
 #print min(1, 3)
 
+tmp = {"abc" : 1, "def" : 2}
+print tmp["def"]
+print tmp.keys()
+tmp["kdf"] = 3
+print tmp
+
+print "abc" + str(2)
+
+print range(1, 10) + ["M", "N"]
 
