@@ -181,7 +181,14 @@ with open("datafortest.txt", 'r') as f:
         tmpstr = f.readline().rstrip('\n')
         genestr = genestr + tmpstr[0 : min(length * 2 - len(genestr), len(tmpstr))]
     print genestr
+    f.seek(25)
+    length = 50
+    genestr = ""
+    while(len(genestr) < length * 2):
+        tmpstr = f.readline().rstrip('\n')
+        genestr = genestr + tmpstr[0 : min(length * 2 - len(genestr), len(tmpstr))]
+    print genestr
     
-print min(1, 3)
+#print min(1, 3)
 
 
